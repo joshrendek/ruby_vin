@@ -26,7 +26,6 @@ module RubyVin
 
     def initialize(vin)
       uri = URI(URL + PATH + vin)
-      p uri
       data = Net::HTTP.get(uri)
       doc = Hpricot(data)
       hash = {}
@@ -39,7 +38,7 @@ module RubyVin
         rescue =>e ; end; 
 
       end
-      print hash.to_yaml
+      @info = hash
     end
   end
 
@@ -77,7 +76,6 @@ module RubyVin
 
       end
 
-      p hash
       @info = hash
     end
 
